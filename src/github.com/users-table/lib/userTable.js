@@ -1,0 +1,120 @@
+'use strict';
+
+// Deterministic JSON.stringify()
+const stringify  = require('json-stringify-deterministic');
+const sortKeysRecursive  = require('sort-keys-recursive');
+const { Contract } = require('fabric-contract-api');
+
+class UserTable extends Contract {
+
+    async InitLedger(ctx) {
+        const docs = [
+            {
+                // ID: 'asset6',
+                // Color: 'white',
+                // Size: 15,
+                // Owner: 'Michel',
+                // AppraisedValue: 800,
+                userID: "HAR",
+                email: "har@gmail.com",
+                username: "harsha",
+                role: "iinrg",
+                password: "12345678",
+            },
+        ];
+
+        for (const doc of docs) {
+            // doc.docType = 'doc';
+            // example of how to write to world state deterministically
+            // use convetion of alphabetic order
+            // we insert data in alphabetic order using 'json-stringify-deterministic' and 'sort-keys-recursive'
+            // when retrieving data, in any lang, the order of data will be the same and consequently also the corresonding hash
+            await ctx.stub.putState(doc.userID, Buffer.from(stringify(sortKeysRecursive(doc))));
+        }
+    }
+
+    // CreateDoc issues a new doc to the world state with given details.
+    async CreateDoc(ctx, userID, email, username, role, password) {
+        const exists = await this.DocExists(ctx, userID);
+        if (exists) {
+            throw new Error(`The doc ${userID} already exists`);
+        }
+
+        const doc = {
+            userID: userID,
+            email: email,
+            username: username,
+            role: role,
+            password: password,
+        };
+        //we insert data in alphabetic order using 'json-stringify-deterministic' and 'sort-keys-recursive'
+        await ctx.stub.putState(userID, Buffer.from(stringify(sortKeysRecursive(doc))));
+        return JSON.stringify(doc);
+    }
+
+    // ReadDoc returns the doc stored in the world state with given id.
+    async ReadDoc(ctx, userID) {
+        const docJSON = await ctx.stub.getState(userID); // get the doc from chaincode state
+        if (!docJSON || docJSON.length === 0) {
+            throw new Error(`The doc ${userID} does not exist`);
+        }
+        return docJSON.toString();
+    }
+
+    // UpdateDoc updates an existing doc in the world state with provided parameters.
+    async UpdateDoc(ctx,  userID, email, username, role, password ) {
+        const exists = await this.DocExists(ctx, userID);
+        if (!exists) {
+            throw new Error(`The doc ${userID} does not exist`);
+        }
+
+        // overwriting original doc with new doc
+        const updatedDoc = {
+            userID: userID,
+            email: email,
+            username: username,
+            role: role,
+            password: password,
+        };
+        // we insert data in alphabetic order using 'json-stringify-deterministic' and 'sort-keys-recursive'
+        return ctx.stub.putState(userID, Buffer.from(stringify(sortKeysRecursive(updatedDoc))));
+    }
+
+    // DeleteDoc deletes an given doc from the world state.
+    async DeleteDoc(ctx, userID) {
+        const exists = await this.DocExists(ctx, userID);
+        if (!exists) {
+            throw new Error(`The doc ${userID} does not exist`);
+        }
+        return ctx.stub.deleteState(userID);
+    }
+
+    // DocExists returns true when doc with given userID exists in world state.
+    async DocExists(ctx, userID) {
+        const docJSON = await ctx.stub.getState(userID);
+        return docJSON && docJSON.length > 0;
+    }
+
+    // GetAllDocs returns all docs found in the world state.
+    async GetAllDocs(ctx) {
+        const allResults = [];
+        // range query with empty string for startKey and endKey does an open-ended query of all docs in the chaincode namespace.
+        const iterator = await ctx.stub.getStateByRange('', '');
+        let result = await iterator.next();
+        while (!result.done) {
+            const strValue = Buffer.from(result.value.value.toString()).toString('utf8');
+            let record;
+            try {
+                record = JSON.parse(strValue);
+            } catch (err) {
+                console.log(err);
+                record = strValue;
+            }
+            allResults.push(record);
+            result = await iterator.next();
+        }
+        return JSON.stringify(allResults);
+    }
+}
+
+module.exports = UserTable;
