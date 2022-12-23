@@ -1,0 +1,3 @@
+Installed chaincodes on peer:
+Package ID: addressestable_1:d58ef2b8516529bbc76193410807de8d392f14159634b3b4ca34c4335bae81c6, Label: addressestable_1
+Package ID: userstable_1:f60f7ddb953684322126460ca18ee466ebaf51c5711f0353499f187cb46b8dd8, Label: userstable_1

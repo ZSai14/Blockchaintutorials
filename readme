@@ -1,0 +1,18 @@
+5 orderer
+5 organisation
+-- --- --- ---- couchdb_port
+
+Org 1: 2 peers 7051 8051    5984    6984
+Org 2: 2 peers 9051 10051   7984    8984
+Org 3: 2 peer 11051 12051   9984    10984
+Org 4: 2 peer 13051 14051   11984   12984
+Org 5: 2 peer 15051 16051   13984   14984
+
+ca-org1 7054
+ca-org2 8054
+ca-org3 9054
+ca-org4 10054
+ca-org5 11054
+
+
+These port values are to be updated accordingly in configtx.yaml file.

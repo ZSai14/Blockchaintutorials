@@ -1,0 +1,62 @@
+{
+    "name": "first-network-org3",
+    "version": "1.0.0",
+    "client": {
+        "organization": "Org3",
+        "connection": {
+            "timeout": {
+                "peer": {
+                    "endorser": "300"
+                }
+            }
+        }
+    },
+    "organizations": {
+        "Org3": {
+            "mspid": "Org3MSP",
+            "peers": [
+                "peer0.org3.iitdhanbad.com",
+                "peer1.org3.iitdhanbad.com"
+            ],
+            "certificateAuthorities": [
+                "ca.org3.iitdhanbad.com"
+            ]
+        }
+    },
+    "peers": {
+        "peer0.org3.iitdhanbad.com": {
+            "url": "grpcs://localhost:11051",
+            "tlsCACerts": {
+                "pem": "-----BEGIN CERTIFICATE-----\nMIICYzCCAgmgAwIBAgIQUv8I4pm7g1ZC+V58btl3XjAKBggqhkjOPQQDAjB8MQsw\nCQYDVQQGEwJVUzETMBEGA1UECBMKQ2FsaWZvcm5pYTEWMBQGA1UEBxMNU2FuIEZy\nYW5jaXNjbzEcMBoGA1UEChMTb3JnMy5paXRkaGFuYmFkLmNvbTEiMCAGA1UEAxMZ\ndGxzY2Eub3JnMy5paXRkaGFuYmFkLmNvbTAeFw0yMjEyMDYwNTMwMDBaFw0zMjEy\nMDMwNTMwMDBaMHwxCzAJBgNVBAYTAlVTMRMwEQYDVQQIEwpDYWxpZm9ybmlhMRYw\nFAYDVQQHEw1TYW4gRnJhbmNpc2NvMRwwGgYDVQQKExNvcmczLmlpdGRoYW5iYWQu\nY29tMSIwIAYDVQQDExl0bHNjYS5vcmczLmlpdGRoYW5iYWQuY29tMFkwEwYHKoZI\nzj0CAQYIKoZIzj0DAQcDQgAEy/wmrlvMCQa9M/nFHkGdTmPm3MF2/mRNG8k9cN0p\ny/sCMSoICP/VX0WHrTezc4Gy9sj1MhZss1mqqLgsbokZuKNtMGswDgYDVR0PAQH/\nBAQDAgGmMB0GA1UdJQQWMBQGCCsGAQUFBwMCBggrBgEFBQcDATAPBgNVHRMBAf8E\nBTADAQH/MCkGA1UdDgQiBCBQbINrbOUHOanD7JydAz2ISc5Z9WcSxGozoDIPlYSq\nHTAKBggqhkjOPQQDAgNIADBFAiEA32wZFrYkjLt6ifaV367V9wATAJ1ktx5ch1ro\nd1W7proCIBN+Rk80soK20b163fB7nVY08GOqziiW8h5egGf1ykKc\n-----END CERTIFICATE-----\n"
+            },
+            "grpcOptions": {
+                "ssl-target-name-override": "peer0.org3.iitdhanbad.com",
+                "hostnameOverride": "peer0.org3.iitdhanbad.com"
+            }
+        },
+	"peer1.org3.iitdhanbad.com": {
+            "url": "grpcs://localhost:12051",
+            "tlsCACerts": {
+                "pem": "-----BEGIN CERTIFICATE-----\nMIICYzCCAgmgAwIBAgIQUv8I4pm7g1ZC+V58btl3XjAKBggqhkjOPQQDAjB8MQsw\nCQYDVQQGEwJVUzETMBEGA1UECBMKQ2FsaWZvcm5pYTEWMBQGA1UEBxMNU2FuIEZy\nYW5jaXNjbzEcMBoGA1UEChMTb3JnMy5paXRkaGFuYmFkLmNvbTEiMCAGA1UEAxMZ\ndGxzY2Eub3JnMy5paXRkaGFuYmFkLmNvbTAeFw0yMjEyMDYwNTMwMDBaFw0zMjEy\nMDMwNTMwMDBaMHwxCzAJBgNVBAYTAlVTMRMwEQYDVQQIEwpDYWxpZm9ybmlhMRYw\nFAYDVQQHEw1TYW4gRnJhbmNpc2NvMRwwGgYDVQQKExNvcmczLmlpdGRoYW5iYWQu\nY29tMSIwIAYDVQQDExl0bHNjYS5vcmczLmlpdGRoYW5iYWQuY29tMFkwEwYHKoZI\nzj0CAQYIKoZIzj0DAQcDQgAEy/wmrlvMCQa9M/nFHkGdTmPm3MF2/mRNG8k9cN0p\ny/sCMSoICP/VX0WHrTezc4Gy9sj1MhZss1mqqLgsbokZuKNtMGswDgYDVR0PAQH/\nBAQDAgGmMB0GA1UdJQQWMBQGCCsGAQUFBwMCBggrBgEFBQcDATAPBgNVHRMBAf8E\nBTADAQH/MCkGA1UdDgQiBCBQbINrbOUHOanD7JydAz2ISc5Z9WcSxGozoDIPlYSq\nHTAKBggqhkjOPQQDAgNIADBFAiEA32wZFrYkjLt6ifaV367V9wATAJ1ktx5ch1ro\nd1W7proCIBN+Rk80soK20b163fB7nVY08GOqziiW8h5egGf1ykKc\n-----END CERTIFICATE-----\n"
+            },
+            "grpcOptions": {
+                "ssl-target-name-override": "peer1.org3.iitdhanbad.com",
+                "hostnameOverride": "peer1.org3.iitdhanbad.com"
+            }
+        }
+
+	
+    },
+    "certificateAuthorities": {
+        "ca.org3.iitdhanbad.com": {
+            "url": "https://localhost:9054",
+            "caName": "ca.org3.iitdhanbad.com",
+            "tlsCACerts": {
+                "pem": "-----BEGIN CERTIFICATE-----\nMIICYzCCAgmgAwIBAgIQUv8I4pm7g1ZC+V58btl3XjAKBggqhkjOPQQDAjB8MQsw\nCQYDVQQGEwJVUzETMBEGA1UECBMKQ2FsaWZvcm5pYTEWMBQGA1UEBxMNU2FuIEZy\nYW5jaXNjbzEcMBoGA1UEChMTb3JnMy5paXRkaGFuYmFkLmNvbTEiMCAGA1UEAxMZ\ndGxzY2Eub3JnMy5paXRkaGFuYmFkLmNvbTAeFw0yMjEyMDYwNTMwMDBaFw0zMjEy\nMDMwNTMwMDBaMHwxCzAJBgNVBAYTAlVTMRMwEQYDVQQIEwpDYWxpZm9ybmlhMRYw\nFAYDVQQHEw1TYW4gRnJhbmNpc2NvMRwwGgYDVQQKExNvcmczLmlpdGRoYW5iYWQu\nY29tMSIwIAYDVQQDExl0bHNjYS5vcmczLmlpdGRoYW5iYWQuY29tMFkwEwYHKoZI\nzj0CAQYIKoZIzj0DAQcDQgAEy/wmrlvMCQa9M/nFHkGdTmPm3MF2/mRNG8k9cN0p\ny/sCMSoICP/VX0WHrTezc4Gy9sj1MhZss1mqqLgsbokZuKNtMGswDgYDVR0PAQH/\nBAQDAgGmMB0GA1UdJQQWMBQGCCsGAQUFBwMCBggrBgEFBQcDATAPBgNVHRMBAf8E\nBTADAQH/MCkGA1UdDgQiBCBQbINrbOUHOanD7JydAz2ISc5Z9WcSxGozoDIPlYSq\nHTAKBggqhkjOPQQDAgNIADBFAiEA32wZFrYkjLt6ifaV367V9wATAJ1ktx5ch1ro\nd1W7proCIBN+Rk80soK20b163fB7nVY08GOqziiW8h5egGf1ykKc\n-----END CERTIFICATE-----\n"
+            },
+            "httpOptions": {
+                "verify": false
+            }
+        }
+    }
+}

@@ -1,0 +1,11 @@
+{
+  "name": "userapi",
+  "version": "1.0.0",
+  "description": "API to interact with HLF network",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Harsha",
+  "license": "ISC"
+}
